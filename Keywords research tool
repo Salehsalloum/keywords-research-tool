@@ -1,0 +1,37 @@
+// This code will create a full keyword research tool. 
+
+// First, we will create a function that will take in a keyword and return related keywords. 
+function getRelatedKeywords(keyword) {
+
+  // We will use an API to get related keywords. 
+  const apiUrl = https://api.example.com/keywords?q=${keyword};
+
+  // Make an AJAX request to the API and return the response as a promise. 
+  return fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => data.related_keywords);
+}
+
+// Next, we will create a function that will take in an array of keywords and return their search volume data. 
+function getSearchVolumeData(keywords) {
+
+  // We will use an API to get search volume data for the given keywords. 
+  const apiUrl = https://api.example.com/search_volume?q=${keywords};
+
+  // Make an AJAX request to the API and return the response as a promise.  
+  return fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => data);  
+}  
+
+// Finally, we will create a function that combines both of these functions into one keyword research tool:  
+function keywordResearchTool(keyword) {
+
+  // First, we get related keywords for the given keyword using our first function:  
+  const relatedKeywords = getRelatedKeywords(keyword);
+
+  // Then, we get search volume data for all of the related keywords using our second function:  
+  const searchVolumeData = getSearchVolumeData(relatedKeywords);
+
+  // Finally, we return both sets of data in one object:  
+return { relatedKeywords, searchVolumeData };                       }
